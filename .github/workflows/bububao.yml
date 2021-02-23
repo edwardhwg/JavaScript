@@ -1,65 +1,46 @@
-​
-2
 name: 步步宝
-3
-​
-4
+
 on:
-5
   workflow_dispatch:
-6
   schedule:
-7
      - cron: '*/30 * * * *'
-8
   watch:
-9
     types: started
-10
 jobs:
-11
   build:
-12
     runs-on: ubuntu-latest
-13
     if: github.event.repository.owner.id == github.event.sender.id
-14
     env:
-15
         BBB_bububaoTOKEN: ${{ secrets.BBB_bububaoTOKEN }}
-16
         TZ: Asia/shanghai
-17
     steps:
-18
       - name: Checkout
-19
         uses: actions/checkout@v2
-20
       - name: Use Node.js 12.x
-21
         uses: actions/setup-node@v1
-22
         with:
-23
           node-version: 12.x
-24
       - name: npm install
-25
         run: |
-26
           npm install
-27
       - name: '运行 【步步宝】'
-28
         if: env.BBB_bububaoTOKEN
-29
         run: |
-30
           node Task/bububao.js
-31
         env:
-32
           BBB_bububaoTOKEN: ${{ secrets.BBB_bububaoTOKEN }}
-33
           PUSH_KEY: ${{ secrets.PUSH_KEY}}
+          BARK_PUSH: ${{ secrets.BARK_PUSH}}
+          BARK_SOUND: ${{ secrets.BARK_SOUND}}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN}}
+          TG_USER_ID: ${{ secrets.TG_USER_ID}}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN}}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET}}
+          QYWX_KEY: ${{ secrets.QYWX_KEY}}
+          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY}}
+          QQ_SKEY: ${{ secrets.QQ_SKEY}}
+          QQ_MODE: ${{ secrets.QQ_MODE}}
+          PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN}}
+          PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER}}
+          TG_PROXY_HOST: ${{ secrets.TG_PROXY_HOST}}
+          TG_PROXY_PORT: ${{ secrets.TG_PROXY_PORT}}
