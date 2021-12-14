@@ -6,7 +6,7 @@ http-response ^https?:\/\/mb3admin.com\/admin\/service\/registration\/validateDe
 http-response \/Users\/\w{32}\/Items\/\d+\? requires-body=true,script-path=https://raw.githubusercontent.com/rartv/EmbyPublic/test/surge/emby-plugin.js,tag=添加外部播放器连接
 http-response \/plugin\/scheme script-path=https://raw.githubusercontent.com/rartv/EmbyPublic/test/surge/emby-plugin.js,tag=打开外部播放器
 http-request (\/Videos\/\d+\/stream\/.+\?.+&filename)|(\/Videos\/\d+\/\w{32}\/Subtitles\/\d+\/.+\?.+&filename),script-path=https://raw.githubusercontent.com/rartv/EmbyPublic/test/surge/emby-plugin.js,tag=资源路径伪静态
-http-response (\/Videos\/\d+\/stream\?.+&filename)|(\/Videos\/\d+\/\w{32}\/Subtitles\/.+&filename) requires-body=false,script-path=https://raw.githubusercontent.com/rartv/EmbyPublic/test/surge/download_file_rename.js,tag=下载文件重命名
+http-response (\/Videos\/\d+\/stream\?.+&filename)|(\/Videos\/\d+\/\w{32}\/Subtitles\/.+&filename) requires-body=true,script-path=https://raw.githubusercontent.com/rartv/EmbyPublic/test/surge/download_file_rename.js,tag=下载文件重命名
 
 [MITM]
 hostname = %APPEND% mb3admin.com, *.emby.wtf:0, *.plusmedia.site:0, *.jmsooo.com:0
